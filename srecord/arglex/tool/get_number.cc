@@ -98,9 +98,9 @@ srecord::arglex_tool::get_number(const char *caption)
     case token_round_down:
         token_next();
         multiple = get_number("-round-down");
-        if(multiple == 0)
+        if (multiple == 0)
         {
-            fatal_error ("-Round_Down value must not be 0");
+            fatal_error("-Round_Down value must not be 0");
         }
         value /= multiple;
         value *= multiple;
@@ -109,9 +109,9 @@ srecord::arglex_tool::get_number(const char *caption)
     case token_round_up:
         token_next();
         multiple = get_number("-round-up");
-        if(multiple == 0)
+        if (multiple == 0)
         {
-            fatal_error ("-Round_Up value must not be 0");
+            fatal_error("-Round_Up value must not be 0");
         }
         value = (value + multiple - 1) / multiple;
         value *= multiple;
@@ -120,9 +120,9 @@ srecord::arglex_tool::get_number(const char *caption)
     case token_round_nearest:
         token_next();
         multiple = get_number("-round-nearest");
-        if(multiple == 0)
+        if (multiple == 0)
         {
-            fatal_error ("-Round_Nearest value must not be 0");
+            fatal_error("-Round_Nearest value must not be 0");
         }
         value = (value + multiple / 2) / multiple;
         value *= multiple;
