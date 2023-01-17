@@ -15,59 +15,108 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-
 cmake_minimum_required(VERSION 3.22)
-project(srecord VERSION "1.65")
-set(CMAKE_BUILD_TYPE Release)
 
-option(ENABLE_BUILDING_DOCS "Enable documentation generation during build" ON)
-
-# Headers are all relative to project root
-include_directories(./)
-
-# Support for pulling in dependencies required for Windows install
-include(InstallRequiredSystemLibraries)
-
-# Support standard install locations
-include(GNUInstallDirs)
-
-# FHS compliant paths for Linux installation
-if(NOT WIN32 AND CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
-#  set(CMAKE_INSTALL_PREFIX "/opt/${PROJECT_NAME}")
-  set(CMAKE_INSTALL_PREFIX "/usr")
+# Stop CMAKE if user trying to build in source
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
+    message(FATAL_ERROR "In source build not supported. Please remove CMakeCache.txt and CMakeFiles/ directory.")
 endif()
 
-# Pull in the rest of the pieces
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/etc")
+project(SRecord
+        VERSION 1.65
+        LANGUAGES C CXX
+)
+
+############################
+##  Modules and scripts   ##
+############################
+
+# Standard CMake modules
+
+include(CTest)                          # Must be called before adding tests but after calling project(). This automatically calls enable_testing() and configures ctest targets when using Make/Ninja
+include(CMakeDependentOption)           # This is a really useful scripts that creates options that depends on other options. It can even be used with generator expressions !
+include(GNUInstallDirs)                 # This will define the default values for installation directories (all platforms even if named GNU)
+include(InstallRequiredSystemLibraries) # Tell CMake that the `install` target needs to install required system libraries (eg: Windows SDK)
+include(CMakePackageConfigHelpers)      # Helper to create relocatable packages
+
+# Custom modules and scripts
+
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/etc/cmake") # Make our cmake scripts available
+
 include(configure)
 
-# Packaging configuration
-include(packaging)
+###############
+##  OPTIONS  ##
+###############
 
-# libsrecord
+# You should try to give as much control over the project setup to the user.
+# When modifying compile flags for example, if they are not mandatory, provide an option.
+
+option(${PROJECT_NAME}_USE_DOXYGEN               "Add a doxygen target to generate the documentation" ON)
+option(${PROJECT_NAME}_USE_ADDITIONAL_SOURCEFILE "Use the additional source file" ON)
+option(${PROJECT_NAME}_INSTALL "Should ${PROJECT_NAME} be added to the install list? Useful if included using add_subdirectory." ON)
+
+# Use your own option for tests, in case people use your library through add_subdirectory
+cmake_dependent_option(${PROJECT_NAME}_BUILD_TESTS
+    "Enable ${PROJECT_NAME} project tests targets" ON # By default we want tests if CTest is enabled
+    "BUILD_TESTING" OFF # Stay coherent with CTest variables
+)
+
+# External dependencies
+#add_subdirectory(external EXCLUDE_FROM_ALL)
+
+# It is always easier to navigate in an IDE when projects are organized in folders.
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+
+# When building a shared library, you do not want to export all symbols by default
+# gcc (and hence clang) are wrong about this.
+#
+# For more information, see https://gcc.gnu.org/wiki/Visibility and https://www.youtube.com/embed/m0DwB4OvDXk
+set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+set(CMAKE_VISIBILITY_INLINES_HIDDEN 1)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/exe )
+###############
+##  Project  ##
+###############
+
+
+#===============#
+# library       #
+#===============#
+add_library(srecord STATIC)
 add_subdirectory(srecord)
+target_include_directories(srecord PRIVATE ${CMAKE_CURRENT_LIST_DIR})
 
-# Build srecord executables
-add_custom_target(srecord-executables)
-add_custom_target(srecord-executables-version DEPENDS srecord-executables)
-foreach(p IN ITEMS srec_cat srec_cmp srec_info)
-  add_subdirectory("${p}")
+#==========================#
+# Executable               #
+#==========================#
+add_executable(srec_cat)
+add_subdirectory(srec_cat)
+target_include_directories(srec_cat PRIVATE ${CMAKE_CURRENT_LIST_DIR})
 
-  add_dependencies(srecord-executables "${p}")
-  if(NOT CMAKE_CROSSCOMPILING)
-    add_custom_target("${p}-version" COMMAND "${p}" --version)
-    add_dependencies(srecord-executables-version "${p}-version")
-  endif()
-endforeach()
+#add_subdirectory(srec_cmp)
+#add_subdirectory(srec_info)
 
-# Tests & support tools
-enable_testing()
-add_subdirectory(test)
 
-if(ENABLE_BUILDING_DOCS)
-  # Documentation & Man Pages
-  add_subdirectory(doc)
-endif()
 
-# Package SRecord
-include(CPack)
+
+
+
+#===========#
+#   Tests   #
+#===========#
+
+# Include test snippet
+
+#############
+## Doxygen ##
+#############
+
+# Include documentation snippet
+
+###############
+## Packaging ##
+###############
+
+# include packaging snippet
+
