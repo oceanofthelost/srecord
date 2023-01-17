@@ -21,7 +21,7 @@ TEST_SUBJECT="-Round_Nearest"
 . test_prelude.sh
 
 srec_cat -generate 0 8 -constant 0 -offset - 1 -Round_Nearest 0 \
-  2> test.out
+    2> test.out
 
 if test $? -ne 1; then fail; fi
 
