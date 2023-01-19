@@ -43,7 +43,6 @@ include(CMakePackageConfigHelpers)      # Helper to create relocatable packages
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/etc/cmake") # Make our cmake scripts available
 
-include(configure)
 
 ###############
 ##  OPTIONS  ##
@@ -52,9 +51,32 @@ include(configure)
 # You should try to give as much control over the project setup to the user.
 # When modifying compile flags for example, if they are not mandatory, provide an option.
 
-option(${PROJECT_NAME}_USE_DOXYGEN               "Add a doxygen target to generate the documentation" ON)
+
+option(${PROJECT_NAME}_ENABLE_DOCUMENTATION "Enable building documentation" ON)
+
+cmake_dependent_option(${PROJECT_NAME}_ENABLE_DOCUMENTATION_DOXYGEN
+    "Add a doxygen target to generate the documentation" ON
+    ${PROJECT_NAME}_ENABLE_DOCUMENTATION OFF)
+
+cmake_dependent_option(${PROJECT_NAME}_ENABLE_DOCUMENTATION_PDF
+    "Add a doxygen target to generate the documentation" ON
+    ${PROJECT_NAME}_ENABLE_DOCUMENTATION OFF)
+
+cmake_dependent_option(${PROJECT_NAME}_ENABLE_DOCUMENTATION_HTML
+    "Add a doxygen target to generate the documentation" ON
+    ${PROJECT_NAME}_ENABLE_DOCUMENTATION OFF)
+
+cmake_dependent_option(${PROJECT_NAME}_ENABLE_DOCUMENTATION_MAN
+    "Add a doxygen target to generate the documentation" ON
+    ${PROJECT_NAME}_ENABLE_DOCUMENTATION OFF)
+
+cmake_dependent_option(${PROJECT_NAME}_ENABLE_DOCUMENTATION_PDF
+    "Add a doxygen target to generate the documentation" ON
+    ${PROJECT_NAME}_ENABLE_DOCUMENTATION OFF)
+
+
 option(${PROJECT_NAME}_USE_ADDITIONAL_SOURCEFILE "Use the additional source file" ON)
-option(${PROJECT_NAME}_INSTALL "Should ${PROJECT_NAME} be added to the install list? Useful if included using add_subdirectory." ON)
+option(${PROJECT_NAME}_INSTALL                   "Should ${PROJECT_NAME} be added to the install list? Useful if included using add_subdirectory." ON)
 
 # Use your own option for tests, in case people use your library through add_subdirectory
 cmake_dependent_option(${PROJECT_NAME}_BUILD_TESTS
@@ -74,6 +96,17 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 # For more information, see https://gcc.gnu.org/wiki/Visibility and https://www.youtube.com/embed/m0DwB4OvDXk
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 set(CMAKE_VISIBILITY_INLINES_HIDDEN 1)
+
+
+
+
+include(configure)
+
+if(${PROJECT_NAME}_ENABLE_DOCUMENTATION)
+    include(documentation)
+endif()
+
+
 ###############
 ##  Project  ##
 ###############
@@ -97,24 +130,26 @@ foreach(p IN LISTS SRecord_EXECUTABLE_LIST)
     add_subdirectory("${p}")
     target_include_directories("${p}" PRIVATE ${CMAKE_CURRENT_LIST_DIR})
     set_target_properties("${p}" PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin )
-
 endforeach()
 
 #===========#
 #   Tests   #
 #===========#
 
-# Include test snippet
-enable_testing()
-add_subdirectory(test)
-
+if(${PROJECT_NAME}_BUILD_TESTS)
+    # Include test snippet
+    add_subdirectory(test)
+endif()
 
 #############
 ## Doxygen ##
 #############
 
 # Include documentation snippet
-
+if(${PROJECT_NAME}_ENABLE_DOCUMENTATION)
+    include(documentation)
+    add_subdirectory(doc)
+endif()
 ###############
 ## Packaging ##
 ###############

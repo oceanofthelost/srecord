@@ -65,3 +65,11 @@ add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/memory)
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/output)
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/quit)
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/string)
+
+
+if(${PROJECT_NAME}_USE_DOXYGEN)
+    # Generate doxygen content for all folder at this level and lower.
+    doxygen_add_docs(srecord-doxygen
+                     ${CMAKE_CURRENT_LIST_DIR}
+                     ALL)
+endif()
