@@ -58,7 +58,7 @@ else()
 endif()
 
 foreach(m_src ${MAN_PAGES})
-    if(${PROJECT_NAME}_ENABLE_DOCUMENTATION_MAN)
+    if(${PROJECT_NAME}_USE_DOCUMENTATION_MAN)
     # troff formatted man pages
     set(m_target ${CMAKE_CURRENT_BINARY_DIR}/${m_src})
     add_custom_command(OUTPUT ${m_target}
@@ -69,7 +69,7 @@ foreach(m_src ${MAN_PAGES})
     list(APPEND MAN_PAGE_OUTPUTS ${m_target})
     endif()
 
-    if(${PROJECT_NAME}_ENABLE_DOCUMENTATION_HTML)
+    if(${PROJECT_NAME}_USE_DOCUMENTATION_HTML)
         # HTML formatted man pages for web viewing
         set(m_target ${CMAKE_CURRENT_BINARY_DIR}/html/man/${m_src}.html)
         cmake_path(GET m_src STEM image_stem_name)
@@ -101,7 +101,7 @@ foreach(m_src ${MAN_PAGES})
 
 endforeach()
 
-if(${PROJECT_NAME}_ENABLE_DOCUMENTATION_HTML)
+if(${PROJECT_NAME}_USE_DOCUMENTATION_HTML)
     # Generate the index page for the HTML formatted man pages
     set(i_target ${CMAKE_CURRENT_BINARY_DIR}/html/man/index.html)
     set(HTML_MAN_PAGE_INDEX ${i_target})
@@ -177,7 +177,7 @@ add_custom_command(OUTPUT ${NEW_CHANGES}
     VERBATIM)
 
 # Standalone Documents
-if(${PROJECT_NAME}_ENABLE_DOCUMENTATION_PDF)
+if(${PROJECT_NAME}_USE_DOCUMENTATION_PDF)
     # Transform man page(s) (ie troff format files) into a PDF
     function(add_doc TARGET SOURCE DEPS)
         add_custom_command(OUTPUT ${TARGET}.groff.ps

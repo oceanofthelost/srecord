@@ -59,19 +59,15 @@ cmake_dependent_option(${PROJECT_NAME}_ENABLE_DOCUMENTATION_DOXYGEN
     ${PROJECT_NAME}_ENABLE_DOCUMENTATION OFF)
 
 cmake_dependent_option(${PROJECT_NAME}_ENABLE_DOCUMENTATION_PDF
-    "Add a doxygen target to generate the documentation" ON
+    "Add a PDF target to generate the documentation" ON
     ${PROJECT_NAME}_ENABLE_DOCUMENTATION OFF)
 
 cmake_dependent_option(${PROJECT_NAME}_ENABLE_DOCUMENTATION_HTML
-    "Add a doxygen target to generate the documentation" ON
+    "Add a HTML target to generate the documentation" ON
     ${PROJECT_NAME}_ENABLE_DOCUMENTATION OFF)
 
 cmake_dependent_option(${PROJECT_NAME}_ENABLE_DOCUMENTATION_MAN
-    "Add a doxygen target to generate the documentation" ON
-    ${PROJECT_NAME}_ENABLE_DOCUMENTATION OFF)
-
-cmake_dependent_option(${PROJECT_NAME}_ENABLE_DOCUMENTATION_PDF
-    "Add a doxygen target to generate the documentation" ON
+    "Add a Man page target to generate the documentation" ON
     ${PROJECT_NAME}_ENABLE_DOCUMENTATION OFF)
 
 
@@ -148,7 +144,6 @@ endif()
 
 # Include documentation snippet
 if(${PROJECT_NAME}_ENABLE_DOCUMENTATION)
-    include(documentation)
     add_subdirectory(doc)
 endif()
 ###############

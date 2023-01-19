@@ -5,6 +5,7 @@ if(${PROJECT_NAME}_ENABLE_DOCUMENTATION)
         # Doxygen configuration
         find_package(Doxygen REQUIRED doxygen dot)
         if(DOXYGEN_FOUND)
+            message("-- Using Doxygen Version: " ${DOXYGEN_VERSION})
             set(${PROJECT_NAME}_USE_DOXYGEN ON)
             set(DOXYGEN_DOT_GRAPH_MAX_NODES 150)
             set(DOXYGEN_ALPHABETICAL_INDEX NO)
@@ -34,6 +35,41 @@ if(${PROJECT_NAME}_ENABLE_DOCUMENTATION)
             set(DOXYGEN_GENERATE_HTML YES)
         endif()
     endif()
+
+
+
+    if(${PROJECT_NAME}_ENABLE_DOCUMENTATION_DOXYGEN)
+        find_program (SRecord_search_groff NAMES
+                        "groff"
+                        DOC "groff"
+        )
+
+        if(SRecord_search_groff)
+            message("-- Using Groff")
+            set(${PROJECT_NAME}_use_DOCUMENTATION_PDF ON)
+        endif()
+    endif()
+
+
+    if(${PROJECT_NAME}_ENABLE_DOCUMENTATION_HTML)
+            set(${PROJECT_NAME}_USE_DOCUMENTATION_HTML ON)
+    endif()
+
+
+
+    if(${PROJECT_NAME}_ENABLE_DOCUMENTATION_MAN)
+
+            set(${PROJECT_NAME}_USE_DOCUMENTATION_MAN ON)
+
+    endif()
+
+
+
+
+
+
+
+
 endif()
 
 
