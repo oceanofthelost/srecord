@@ -73,3 +73,18 @@ if(${PROJECT_NAME}_USE_DOXYGEN)
                      ${CMAKE_CURRENT_LIST_DIR}
                      ALL)
 endif()
+
+# Install the library
+install(TARGETS srecord
+        DESTINATION ${CMAKE_INSTALL_LIBDIR})
+
+# Install the development headers
+# A more modern approach would use a cmake 3.23 FILE SET
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+        FILES_MATCHING PATTERN "*.h")
+
+# Install the Doxygen output for the website
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html
+        DESTINATION ${CMAKE_INSTALL_DOCDIR}/htdocs/srecord
+        COMPONENT website)

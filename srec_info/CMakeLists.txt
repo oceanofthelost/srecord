@@ -24,3 +24,5 @@ target_sources(srec_info
 )
 
 target_link_libraries(srec_info srecord ${LIB_GCRYPT})
+
+INSTALL_SRECORD_EXECUTABLE_TARGET(srec_info)

@@ -106,6 +106,7 @@ if(${PROJECT_NAME}_ENABLE_DOCUMENTATION)
     include(documentation)
 endif()
 
+include(packaging)
 
 ###############
 ##  Project  ##
