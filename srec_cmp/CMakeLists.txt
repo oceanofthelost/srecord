@@ -17,8 +17,10 @@
 #
 
 # Build srecord executable
-file(GLOB_RECURSE SREC_CMP_SRC "*.cc")
-add_executable(srec_cmp ${SREC_CMP_SRC})
-target_link_libraries(srec_cmp lib_srecord ${LIB_GCRYPT})
+target_sources(srec_cmp
+    PRIVATE
+        ${CMAKE_CURRENT_LIST_DIR}/main.cc
 
-INSTALL_SRECORD_EXECUTABLE_TARGET(srec_cmp)
+)
+
+target_link_libraries(srec_cmp srecord ${LIB_GCRYPT})
