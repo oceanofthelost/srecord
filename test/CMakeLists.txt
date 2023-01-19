@@ -19,23 +19,28 @@
 # Build test support executables
 file(GLOB_RECURSE TEST_ARGLEX_AMBIGUOUS_SRC "arglex_ambiguous/*.cc")
 add_executable(test_arglex_ambiguous ${TEST_ARGLEX_AMBIGUOUS_SRC})
-target_link_libraries(test_arglex_ambiguous lib_srecord ${LIB_GCRYPT})
+target_link_libraries(test_arglex_ambiguous srecord ${LIB_GCRYPT})
+target_include_directories(test_arglex_ambiguous PRIVATE ${CMAKE_CURRENT_LIST_DIR}/..)
 
 file(GLOB_RECURSE TEST_CRC16_SRC "crc16/*.cc")
 add_executable(test_crc16 ${TEST_CRC16_SRC})
-target_link_libraries(test_crc16 lib_srecord)
+target_link_libraries(test_crc16 srecord)
+target_include_directories(test_crc16 PRIVATE ${CMAKE_CURRENT_LIST_DIR}/..)
 
 file(GLOB_RECURSE TEST_FLETCHER16_SRC "fletcher16/*.cc")
 add_executable(test_fletcher16 ${TEST_FLETCHER16_SRC})
-target_link_libraries(test_fletcher16 lib_srecord)
+target_link_libraries(test_fletcher16 srecord)
+target_include_directories(test_fletcher16 PRIVATE ${CMAKE_CURRENT_LIST_DIR}/..)
 
 file(GLOB_RECURSE TEST_HYPHEN_SRC "hyphen/*.cc")
 add_executable(test_hyphen ${TEST_HYPHEN_SRC})
-target_link_libraries(test_hyphen lib_srecord)
+target_link_libraries(test_hyphen srecord)
+target_include_directories(test_hyphen PRIVATE ${CMAKE_CURRENT_LIST_DIR}/..)
 
 file(GLOB_RECURSE TEST_URL_DECODE_SRC "url_decode/*.cc")
 add_executable(test_url_decode ${TEST_URL_DECODE_SRC})
-target_link_libraries(test_url_decode lib_srecord)
+target_link_libraries(test_url_decode srecord)
+target_include_directories(test_url_decode PRIVATE ${CMAKE_CURRENT_LIST_DIR}/..)
 
 add_custom_target(prepare-test
     DEPENDS
@@ -61,9 +66,7 @@ foreach(t ${SRECORD_TESTS})
     add_test(NAME ${test_name} COMMAND sh ${t})
     set_property(TEST ${test_name} APPEND PROPERTY
         ENVIRONMENT_MODIFICATION
-        PATH=path_list_prepend:${CMAKE_BINARY_DIR}/srec_cat
-        PATH=path_list_prepend:${CMAKE_BINARY_DIR}/srec_cmp
-        PATH=path_list_prepend:${CMAKE_BINARY_DIR}/srec_info
+        PATH=path_list_prepend:${CMAKE_BINARY_DIR}/bin
         PATH=path_list_prepend:${CMAKE_BINARY_DIR}/test
         PATH=path_list_prepend:${CMAKE_SOURCE_DIR}/test)
 endforeach()
