@@ -36,9 +36,11 @@ if(${PROJECT_NAME}_ENABLE_DOCUMENTATION)
         endif()
     endif()
 
+    if(    ${PROJECT_NAME}_ENABLE_DOCUMENTATION_PDF
+        OR ${PROJECT_NAME}_ENABLE_DOCUMENTATION_HTML
+        OR ${PROJECT_NAME}_ENABLE_DOCUMENTATION_MAN
+    )
 
-
-    if(${PROJECT_NAME}_ENABLE_DOCUMENTATION_DOXYGEN)
         find_program (SRecord_search_groff NAMES
                         "groff"
                         DOC "groff"
@@ -46,30 +48,22 @@ if(${PROJECT_NAME}_ENABLE_DOCUMENTATION)
 
         if(SRecord_search_groff)
             message("-- Using Groff")
-            set(${PROJECT_NAME}_use_DOCUMENTATION_PDF ON)
+            set(${PROJECT_NAME}_USE_DOCUMENTATION_PDF ON)
         endif()
     endif()
 
+    if(${PROJECT_NAME}_ENABLE_DOCUMENTATION_PDF)
+        message("-- Generating PDF Documentation")
+        set(${PROJECT_NAME}_USE_DOCUMENTATION_PDF ON)
+    endif()
 
     if(${PROJECT_NAME}_ENABLE_DOCUMENTATION_HTML)
-            set(${PROJECT_NAME}_USE_DOCUMENTATION_HTML ON)
+        message("-- Generating HTML Documentation")
+        set(${PROJECT_NAME}_USE_DOCUMENTATION_HTML ON)
     endif()
-
-
 
     if(${PROJECT_NAME}_ENABLE_DOCUMENTATION_MAN)
-
-            set(${PROJECT_NAME}_USE_DOCUMENTATION_MAN ON)
-
+        message("-- Generating Man Pages")
+        set(${PROJECT_NAME}_USE_DOCUMENTATION_MAN ON)
     endif()
-
-
-
-
-
-
-
-
 endif()
-
-
