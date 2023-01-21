@@ -20,7 +20,11 @@ cmake_minimum_required(VERSION 3.22)
 project(srecord VERSION "1.65")
 set(CMAKE_BUILD_TYPE Release)
 
-option(SRecord_ENABLE_DOCS "Enable documentation generation" OFF)
+
+option(SRecord_ENABLE_COMPILER_CACHE
+    "Enable Compiler Caching"
+    OFF
+)
 
 # Headers are all relative to project root
 include_directories(./)
@@ -43,6 +47,11 @@ include(configure)
 
 # Packaging configuration
 include(packaging)
+
+if(SRecord_ENABLE_COMPILER_CACHE)
+    include(UseCompilerCache)
+    useCompilerCache()
+endif()
 
 # libsrecord
 add_subdirectory(srecord)
