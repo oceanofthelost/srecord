@@ -1,6 +1,6 @@
 #
 # srecord - Manipulate EPROM load files
-# Copyright (C) 2022 Scott Finneran
+# Copyright (C) 2018 - 2022 Scott Finneran
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,13 +16,12 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 
-# Build srecord executable
-target_sources(srec_cmp
+target_sources(srecord
     PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/main.cc
-
+        ${CMAKE_CURRENT_LIST_DIR}/file.cc
+        ${CMAKE_CURRENT_LIST_DIR}/filter.cc
 )
 
-target_link_libraries(srec_cmp srecord ${LIB_GCRYPT})
 
-INSTALL_SRECORD_EXECUTABLE_TARGET(srec_cmp)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/file)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/filter)

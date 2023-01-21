@@ -16,15 +16,66 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 
-# lib_srecord - Need to move away from globbing
-file(GLOB_RECURSE LIB_SRECORD_SRC "*.cc")
-file(GLOB_RECURSE LIB_SRECORD_HDR "*.h")
+# Generate configuration files
+# output  files will be located in build folder.
+configure_file(config.h.in config.h @ONLY)
+configure_file(patchlevel.h.in patchlevel.h @ONLY)
 
-message(STATUS "gcrypt location ${LIB_GCRYPT}")
-add_library(lib_srecord STATIC ${LIB_SRECORD_SRC} ${LIB_SRECORD_HDR} ${LIB_GCRYPT})
+
+# Include source files from folder
+target_sources(srecord
+    PRIVATE
+        ${CMAKE_CURRENT_LIST_DIR}/adler16.cc
+        ${CMAKE_CURRENT_LIST_DIR}/adler32.cc
+        ${CMAKE_CURRENT_LIST_DIR}/arglex.cc
+        ${CMAKE_CURRENT_LIST_DIR}/bitrev.cc
+        ${CMAKE_CURRENT_LIST_DIR}/crc16.cc
+        ${CMAKE_CURRENT_LIST_DIR}/crc32.cc
+        ${CMAKE_CURRENT_LIST_DIR}/defcon.cc
+        ${CMAKE_CURRENT_LIST_DIR}/endian.cc
+        ${CMAKE_CURRENT_LIST_DIR}/fletcher16.cc
+        ${CMAKE_CURRENT_LIST_DIR}/fletcher32.cc
+        ${CMAKE_CURRENT_LIST_DIR}/input.cc
+        ${CMAKE_CURRENT_LIST_DIR}/interval.cc
+        ${CMAKE_CURRENT_LIST_DIR}/memory.cc
+        ${CMAKE_CURRENT_LIST_DIR}/output.cc
+        ${CMAKE_CURRENT_LIST_DIR}/pretty_size.cc
+        ${CMAKE_CURRENT_LIST_DIR}/progname.cc
+        ${CMAKE_CURRENT_LIST_DIR}/quit.cc
+        ${CMAKE_CURRENT_LIST_DIR}/r250.cc
+        ${CMAKE_CURRENT_LIST_DIR}/record.cc
+        ${CMAKE_CURRENT_LIST_DIR}/stm32.cc
+        ${CMAKE_CURRENT_LIST_DIR}/versn_stamp.cc
+        ${CMAKE_CURRENT_LIST_DIR}/vsnprintf.cc
+)
+
+# Include additional directories
+# Includes directory where config files reside.
+target_include_directories(srecord
+    PRIVATE
+        ${CMAKE_CURRENT_BINARY_DIR}
+)
+
+# Add all sub directories
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/arglex)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/endian)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/input)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/interval)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/memory)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/output)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/quit)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/string)
+
+
+if(${PROJECT_NAME}_USE_DOXYGEN)
+    # Generate doxygen content for all folder at this level and lower.
+    doxygen_add_docs(srecord-doxygen
+                     ${CMAKE_CURRENT_LIST_DIR}
+                     ALL)
+endif()
 
 # Install the library
-install(TARGETS lib_srecord
+install(TARGETS srecord
         DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 # Install the development headers

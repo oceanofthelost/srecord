@@ -15,10 +15,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-
 # Build srecord executable
-file(GLOB_RECURSE SREC_CAT_SRC "*.cc")
-add_executable(srec_cat ${SREC_CAT_SRC})
-target_link_libraries(srec_cat lib_srecord ${LIB_GCRYPT})
+target_sources(srec_cat
+    PRIVATE
+        ${CMAKE_CURRENT_LIST_DIR}/arglex3.cc
+        ${CMAKE_CURRENT_LIST_DIR}/arglex3.h
+        ${CMAKE_CURRENT_LIST_DIR}/main.cc
+
+)
+
+target_link_libraries(srec_cat srecord ${LIB_GCRYPT})
 
 INSTALL_SRECORD_EXECUTABLE_TARGET(srec_cat)
