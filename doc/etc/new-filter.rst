@@ -2,8 +2,6 @@
 New Filter
 ==========
 
-:Date:   SRecord
-
 NAME
 ====
 

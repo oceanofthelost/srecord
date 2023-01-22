@@ -2,8 +2,6 @@
 Build
 =====
 
-:Date:   SRecord
-
 NAME
 ====
 

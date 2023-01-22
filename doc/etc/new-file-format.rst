@@ -2,8 +2,6 @@
 New Format
 ==========
 
-:Date:   SRecord
-
 NAME
 ====
 
