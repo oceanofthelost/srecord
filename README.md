@@ -10,48 +10,51 @@ The SRecord package is a collection of powerful tools for manipulating EPROM loa
 
 The SRecord package understands a number of file formats:
 
-* **Ascii-Hex**: input/output; also known as **ascii-space-hex**
-* **ASM**: output only; for embedding data into *Assembler* code
-* **Atmel Generic**: input/output; used by *Atmel AVR assembler*
-* **BASIC**: output only; for embedding data into *BASIC* code
-* **BinaryBinary**: input/output
-* **B-Record**: input/output; also known as **Freescale Dragonball bootstrap b-record**
-* **C**: output only; for embedding data into *C* code
-* **COE**: output only; Extension `.coe`; also known as **Xilinx Coefficient File** format
-* **Cosmac**: input/output; also known as **RCA Cosmac Elf** format
-* **DEC Binary (XXDP)**: input/output
-* **Elektor Monitor (EMON52)**: input/output
-* **Fairchild Fairbug**: input/output
-* **Formatted Binary**: input/output
-* **Four Packed Code (FPC)**: input/output
-* **Hexdump**: output only; a simple hexdump
-* **HP64000 Absolute**: input only
-* **IDT/sim**: input/output
-* **Intel**: input/output; also known as **Intel MCS-86 Object** format
-* **Intel Absolute Object Module Format (AOMF)**: input/output
-* **Intel 16 (INHX16)**: input/output; also known as **Intel hexadecimal 16**
-* **LSI Logic Fast Load**: input/output
-* **Logisim**: input/output
-* **Memory Initialization Format**: output only; Extension `.mem`; used by *Lattice Semiconductor*
-* **MIF**: input/output; used by *Altera* **Memory Initialization File** format
-* **MOS Technology**: input/output
-* **MIPS-Flash**: input/output
-* **Motorola S-Record**: input/output; also known as the **Exorciser**, **Exormacs** or **Exormax**
-* **MsBin**: input/output; also known as **Windows CE Binary Image Data** format
-* **Needham**: input/output; also known as **Needham Electronics ASCII file** format
-* **OS65V**: input/output; also known as **Ohio Scientific hexadecimal** format
-* **PPB**: input/output, also known as **Stag Prom Programmer binary**
-* **PPX**: input/output, also known as **Stag Prom Programmer hexadecimal**
-* **Signetics**: input/output
-* **SPASM**: input/output; used by a variety of *PIC* programmers
-* **Spectrum**: input/output
-* **Tektronix**: input/output
-* **Tektronix Extended**: input/output
-* **Texas Instruments Tagged**: input/output (both 8 and 16 bit); also known as **TI-tagged** or **TI-SDSMAC**
-* **Texas Instruments ti-txt**: input/output; used by bootstrap loader of *TI MSP430*
-* **TRS-80**: input/output; used by *The Radio Shack*
-* **VHDL**: output only
-* **Verilog VMEM**: input/output; suitable for loading with `$readmemh()`
-* **Wilson**: input/output; mysterious type of EPROM writer
+| Protocol | Input | Output | Description |
+|----|----|----|----|
+| **Ascii-Hex**                                  | :white_check_mark:  | :white_check_mark: | Also known as **ascii-space-hex**                                  |
+| **ASM**                                        |                     | :white_check_mark: | Only for embedding data into *Assembler* code                      |
+| **Atmel Generic**                              | :white_check_mark:  | :white_check_mark: | Used by *Atmel AVR assembler*                                      |
+| **BASIC**                                      |                     | :white_check_mark: | Only for embedding data into *BASIC* code                          |
+| **BinaryBinary**                               | :white_check_mark:  | :white_check_mark: |                                                                    |
+| **B-Record**                                   | :white_check_mark:  | :white_check_mark: | also known as **Freescale Dragonball bootstrap b-record**          |
+| **C**                                          |                     | :white_check_mark: | Only for embedding data into *C* code                              |
+| **COE**                                        |                     | :white_check_mark: | Extension `.coe`; also known as **Xilinx Coefficient File** format |
+| **Cosmac**                                     | :white_check_mark:  | :white_check_mark: | also known as **RCA Cosmac Elf** format                            |
+| **DEC Binary (XXDP)**                          | :white_check_mark:  | :white_check_mark: |                                                                    |
+| **Elektor Monitor (EMON52)**                   | :white_check_mark:  | :white_check_mark: |                                                                    |
+| **Fairchild Fairbug**                          | :white_check_mark:  | :white_check_mark: |                                                                    |
+| **Formatted Binary**                           | :white_check_mark:  | :white_check_mark: |                                                                    |
+| **Four Packed Code (FPC)**                     | :white_check_mark:  | :white_check_mark: |                                                                    |
+| **Hexdump**                                    |                     | :white_check_mark: | A simple hexdump                                                   |
+| **HP64000 Absolute**                           | :white_check_mark:  |                    |                                                                    |
+| **IDT/sim**                                    | :white_check_mark:  | :white_check_mark: |                                                                    |
+| **Intel**                                      | :white_check_mark:  | :white_check_mark: | Also known as **Intel MCS-86 Object** format                       |
+| **Intel Absolute Object Module Format (AOMF)** | :white_check_mark:  | :white_check_mark: |                                                                    |
+| **Intel 16 (INHX16)**                          | :white_check_mark:  | :white_check_mark: | Also known as **Intel hexadecimal 16**                             |
+| **LSI Logic Fast Load**                        | :white_check_mark:  | :white_check_mark: |                                                                    |
+| **Logisim**                                    | :white_check_mark:  | :white_check_mark: |                                                                    |
+| **Memory Initialization Format**               |                     | :white_check_mark: | Extension `.mem`; used by *Lattice Semiconductor*                  |
+| **MIF**                                        | :white_check_mark:  | :white_check_mark: | Used by *Altera* **Memory Initialization File** format             |
+| **MOS Technology**                             | :white_check_mark:  | :white_check_mark: |                                                                    |
+| **MIPS-Flash**                                 | :white_check_mark:  | :white_check_mark: |                                                                    |
+| **Motorola S-Record**                          | :white_check_mark:  | :white_check_mark: | Also known as the **Exorciser**, **Exormacs** or **Exormax**       |
+| **MsBin**                                      | :white_check_mark:  | :white_check_mark: | Also known as **Windows CE Binary Image Data** format              |
+| **Needham**qqq                                 | :white_check_mark:  | :white_check_mark: | Also known as **Needham Electronics ASCII file** format            |
+| **OS65V**                                      | :white_check_mark:  | :white_check_mark: | Also known as **Ohio Scientific hexadecimal** format               |
+| **PPB**                                        | :white_check_mark:  | :white_check_mark: | Also known as **Stag Prom Programmer binary**                      |
+| **PPX**                                        | :white_check_mark:  | :white_check_mark: | Also known as **Stag Prom Programmer hexadecimal**                 |
+| **Signetics**                                  | :white_check_mark:  | :white_check_mark: |                                                                    |
+| **SPASM**                                      | :white_check_mark:  | :white_check_mark: | Used by a variety of *PIC* programmers                             |
+| **Spectrum**                                   | :white_check_mark:  | :white_check_mark: |                                                                    |
+| **Tektronix**                                  | :white_check_mark:  | :white_check_mark: |                                                                    |
+| **Tektronix Extended**                         | :white_check_mark:  | :white_check_mark: |                                                                    |
+| **Texas Instruments Tagged (8 Bit)**           | :white_check_mark:  | :white_check_mark: | Also known as **TI-tagged** or **TI-SDSMAC**                       |
+| **Texas Instruments Tagged (16 Bit)**          | :white_check_mark:  | :white_check_mark: | Also known as **TI-tagged** or **TI-SDSMAC**                       |
+| **Texas Instruments ti-txt**                   | :white_check_mark:  | :white_check_mark: | Used by bootstrap loader of *TI MSP430*                            |
+| **TRS-80**                                     | :white_check_mark:  | :white_check_mark: | Used by *The Radio Shack*                                          |
+| **VHDL**                                       |                     | :white_check_mark: |                                                                    |
+| **Verilog VMEM**                               | :white_check_mark:  | :white_check_mark: | Suitable for loading with `$readmemh()`                            |
+| **Wilson**                                     | :white_check_mark:  | :white_check_mark: | Mysterious type of EPROM writer                                    |
 
 Full documentation and binary packages can be found at the [SRecord website](https://srecord.sourceforge.net/)
