@@ -2,8 +2,6 @@
 srec_cat
 ========
 
-:Date:   SRecord
-
 NAME
 ====
 

@@ -2,8 +2,6 @@
 srec_input
 ==========
 
-:Date:   SRecord
-
 NAME
 ====
 

@@ -78,3 +78,5 @@ m4/lt~obsolete.m4
 
 # CMake
 /build
+compile_commands.json
+

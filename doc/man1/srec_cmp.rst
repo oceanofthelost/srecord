@@ -2,8 +2,6 @@
 srec_cmp
 ========
 
-:Date:   SRecord
-
 NAME
 ====
 
@@ -75,7 +73,7 @@ The following options are understood:
    are ignored. Blank lines are ignored.
 
 **-Help**
-   | 
+   |
    | Provide some help with using the *srec_cmp* program.
 
 **-IGnore_Checksums**
@@ -144,11 +142,11 @@ The following options are understood:
       values.
 
 **-VERSion**
-   | 
+   |
    | Print the version of the *srec_cmp* program being executed.
 
 **-Verbose**
-   | 
+   |
    | This option may be used to obtain more information about how and
      where the two files differ. Please note that this takes longer, and
      the output can be voluminous.

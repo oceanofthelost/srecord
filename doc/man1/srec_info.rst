@@ -2,8 +2,6 @@
 srec_info
 =========
 
-:Date:   SRecord
-
 NAME
 ====
 
@@ -81,7 +79,7 @@ The following options are understood:
    are ignored. Blank lines are ignored.
 
 **-Help**
-   | 
+   |
    | Provide some help with using the *srec_info* program.
 
 **-IGnore_Checksums**
@@ -150,12 +148,12 @@ The following options are understood:
       values.
 
 **-Verbose**
-   | 
+   |
    | This option may be used to obtain more information about the input
      files including size of blocks and allocation ratio.
 
 **-VERSion**
-   | 
+   |
    | Print the version of the *srec_info* program being executed.
 
 All other options will produce a diagnostic error.
