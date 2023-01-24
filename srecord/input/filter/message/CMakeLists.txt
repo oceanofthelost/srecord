@@ -18,12 +18,12 @@
 
 target_sources(srecord
     PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/adler16.cc
-        ${CMAKE_CURRENT_LIST_DIR}/adler32.cc
-        ${CMAKE_CURRENT_LIST_DIR}/crc16.cc
-        ${CMAKE_CURRENT_LIST_DIR}/crc32.cc
-        ${CMAKE_CURRENT_LIST_DIR}/fletcher16.cc
-        ${CMAKE_CURRENT_LIST_DIR}/fletcher32.cc
-        ${CMAKE_CURRENT_LIST_DIR}/gcrypt.cc
-        ${CMAKE_CURRENT_LIST_DIR}/stm32.cc
+        adler16.cc
+        adler32.cc
+        crc16.cc
+        crc32.cc
+        fletcher16.cc
+        fletcher32.cc
+        gcrypt.cc
+        stm32.cc
 )

@@ -18,9 +18,9 @@
 # Build srecord executable
 target_sources(srec_cat
     PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/arglex3.cc
-        ${CMAKE_CURRENT_LIST_DIR}/arglex3.h
-        ${CMAKE_CURRENT_LIST_DIR}/main.cc
+        arglex3.cc
+        arglex3.h
+        main.cc
 
 )
 

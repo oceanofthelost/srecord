@@ -18,6 +18,6 @@
 
 target_sources(srecord
     PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/decode_word.cc
+        decode_word.cc
 
 )

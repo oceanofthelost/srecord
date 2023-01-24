@@ -18,7 +18,7 @@
 
 target_sources(srecord
     PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/constant.cc
-        ${CMAKE_CURRENT_LIST_DIR}/random.cc
-        ${CMAKE_CURRENT_LIST_DIR}/repeat.cc
+        constant.cc
+        random.cc
+        repeat.cc
 )

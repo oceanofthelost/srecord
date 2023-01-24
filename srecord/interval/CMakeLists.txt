@@ -18,6 +18,6 @@
 
 target_sources(srecord
     PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/coverage.cc
-        ${CMAKE_CURRENT_LIST_DIR}/flatten.cc
+        coverage.cc
+        flatten.cc
 )

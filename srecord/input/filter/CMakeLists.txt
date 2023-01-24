@@ -18,25 +18,25 @@
 
 target_sources(srecord
     PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/and.cc
-        ${CMAKE_CURRENT_LIST_DIR}/bitrev.cc
-        ${CMAKE_CURRENT_LIST_DIR}/byte_swap.cc
-        ${CMAKE_CURRENT_LIST_DIR}/checksum.cc
-        ${CMAKE_CURRENT_LIST_DIR}/crop.cc
-        ${CMAKE_CURRENT_LIST_DIR}/fill.cc
-        ${CMAKE_CURRENT_LIST_DIR}/interval.cc
-        ${CMAKE_CURRENT_LIST_DIR}/message.cc
-        ${CMAKE_CURRENT_LIST_DIR}/not.cc
-        ${CMAKE_CURRENT_LIST_DIR}/offset.cc
-        ${CMAKE_CURRENT_LIST_DIR}/or.cc
-        ${CMAKE_CURRENT_LIST_DIR}/random_fill.cc
-        ${CMAKE_CURRENT_LIST_DIR}/sequence.cc
-        ${CMAKE_CURRENT_LIST_DIR}/split.cc
-        ${CMAKE_CURRENT_LIST_DIR}/unfill.cc
-        ${CMAKE_CURRENT_LIST_DIR}/unsplit.cc
-        ${CMAKE_CURRENT_LIST_DIR}/xor.cc
+        and.cc
+        bitrev.cc
+        byte_swap.cc
+        checksum.cc
+        crop.cc
+        fill.cc
+        interval.cc
+        message.cc
+        not.cc
+        offset.cc
+        or.cc
+        random_fill.cc
+        sequence.cc
+        split.cc
+        unfill.cc
+        unsplit.cc
+        xor.cc
 )
 
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/checksum)
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/interval)
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/message)
+add_subdirectory(checksum)
+add_subdirectory(interval)
+add_subdirectory(message)

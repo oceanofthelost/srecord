@@ -18,7 +18,7 @@
 
 target_sources(srecord
     PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/exception.cc
-        ${CMAKE_CURRENT_LIST_DIR}/normal.cc
-        ${CMAKE_CURRENT_LIST_DIR}/prefix.cc
+        exception.cc
+        normal.cc
+        prefix.cc
 )

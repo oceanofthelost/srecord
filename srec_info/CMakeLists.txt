@@ -19,7 +19,7 @@
 # Build srecord executable
 target_sources(srec_info
     PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/main.cc
+        main.cc
 
 )
 

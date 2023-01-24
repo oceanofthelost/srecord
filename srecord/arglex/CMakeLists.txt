@@ -18,9 +18,9 @@
 
 target_sources(srecord
     PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/abbreviate.cc
-        ${CMAKE_CURRENT_LIST_DIR}/test_ambiguous.cc
-        ${CMAKE_CURRENT_LIST_DIR}/tool.cc
+        abbreviate.cc
+        test_ambiguous.cc
+        tool.cc
 )
 
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/tool)
+add_subdirectory(tool)

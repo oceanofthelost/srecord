@@ -25,28 +25,28 @@ configure_file(patchlevel.h.in patchlevel.h @ONLY)
 # Include source files from folder
 target_sources(srecord
     PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/adler16.cc
-        ${CMAKE_CURRENT_LIST_DIR}/adler32.cc
-        ${CMAKE_CURRENT_LIST_DIR}/arglex.cc
-        ${CMAKE_CURRENT_LIST_DIR}/bitrev.cc
-        ${CMAKE_CURRENT_LIST_DIR}/crc16.cc
-        ${CMAKE_CURRENT_LIST_DIR}/crc32.cc
-        ${CMAKE_CURRENT_LIST_DIR}/defcon.cc
-        ${CMAKE_CURRENT_LIST_DIR}/endian.cc
-        ${CMAKE_CURRENT_LIST_DIR}/fletcher16.cc
-        ${CMAKE_CURRENT_LIST_DIR}/fletcher32.cc
-        ${CMAKE_CURRENT_LIST_DIR}/input.cc
-        ${CMAKE_CURRENT_LIST_DIR}/interval.cc
-        ${CMAKE_CURRENT_LIST_DIR}/memory.cc
-        ${CMAKE_CURRENT_LIST_DIR}/output.cc
-        ${CMAKE_CURRENT_LIST_DIR}/pretty_size.cc
-        ${CMAKE_CURRENT_LIST_DIR}/progname.cc
-        ${CMAKE_CURRENT_LIST_DIR}/quit.cc
-        ${CMAKE_CURRENT_LIST_DIR}/r250.cc
-        ${CMAKE_CURRENT_LIST_DIR}/record.cc
-        ${CMAKE_CURRENT_LIST_DIR}/stm32.cc
-        ${CMAKE_CURRENT_LIST_DIR}/versn_stamp.cc
-        ${CMAKE_CURRENT_LIST_DIR}/vsnprintf.cc
+        adler16.cc
+        adler32.cc
+        arglex.cc
+        bitrev.cc
+        crc16.cc
+        crc32.cc
+        defcon.cc
+        endian.cc
+        fletcher16.cc
+        fletcher32.cc
+        input.cc
+        interval.cc
+        memory.cc
+        output.cc
+        pretty_size.cc
+        progname.cc
+        quit.cc
+        r250.cc
+        record.cc
+        stm32.cc
+        versn_stamp.cc
+        vsnprintf.cc
 )
 
 # Include additional directories
@@ -57,14 +57,14 @@ target_include_directories(srecord
 )
 
 # Add all sub directories
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/arglex)
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/endian)
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/input)
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/interval)
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/memory)
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/output)
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/quit)
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/string)
+add_subdirectory(arglex)
+add_subdirectory(endian)
+add_subdirectory(input)
+add_subdirectory(interval)
+add_subdirectory(memory)
+add_subdirectory(output)
+add_subdirectory(quit)
+add_subdirectory(string)
 
 
 if(${PROJECT_NAME}_USE_DOXYGEN)

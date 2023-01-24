@@ -18,7 +18,7 @@
 
 target_sources(srecord
     PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/bitnot.cc
-        ${CMAKE_CURRENT_LIST_DIR}/negative.cc
-        ${CMAKE_CURRENT_LIST_DIR}/positive.cc
+        bitnot.cc
+        negative.cc
+        positive.cc
 )

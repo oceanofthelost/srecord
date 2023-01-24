@@ -18,13 +18,13 @@
 
 target_sources(srecord
     PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/catenate.cc
-        ${CMAKE_CURRENT_LIST_DIR}/file.cc
-        ${CMAKE_CURRENT_LIST_DIR}/filter.cc
-        ${CMAKE_CURRENT_LIST_DIR}/generator.cc
-        ${CMAKE_CURRENT_LIST_DIR}/interval.cc
+        catenate.cc
+        file.cc
+        filter.cc
+        generator.cc
+        interval.cc
 )
 
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/file)
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/filter)
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/generator)
+add_subdirectory(file)
+add_subdirectory(filter)
+add_subdirectory(generator)

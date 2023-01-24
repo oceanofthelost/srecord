@@ -18,7 +18,7 @@
 
 target_sources(srecord
     PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/length.cc
-        ${CMAKE_CURRENT_LIST_DIR}/maximum.cc
-        ${CMAKE_CURRENT_LIST_DIR}/minimum.cc
+        length.cc
+        maximum.cc
+        minimum.cc
 )

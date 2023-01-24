@@ -18,10 +18,10 @@
 
 target_sources(srecord
     PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/get_interval.cc
-        ${CMAKE_CURRENT_LIST_DIR}/get_interval_small.cc
-        ${CMAKE_CURRENT_LIST_DIR}/get_number.cc
-        ${CMAKE_CURRENT_LIST_DIR}/get_string.cc
-        ${CMAKE_CURRENT_LIST_DIR}/input.cc
-        ${CMAKE_CURRENT_LIST_DIR}/output.cc
+        get_interval.cc
+        get_interval_small.cc
+        get_number.cc
+        get_string.cc
+        input.cc
+        output.cc
 )

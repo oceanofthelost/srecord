@@ -18,7 +18,7 @@
 
 target_sources(srecord
     PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/quote_c.cc
-        ${CMAKE_CURRENT_LIST_DIR}/url_decode.cc
-        ${CMAKE_CURRENT_LIST_DIR}/url_encode.cc
+        quote_c.cc
+        url_decode.cc
+        url_encode.cc
 )

@@ -18,8 +18,8 @@
 
 target_sources(srecord
     PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/chunk.cc
-        ${CMAKE_CURRENT_LIST_DIR}/walker.cc
+        chunk.cc
+        walker.cc
 )
 
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/walker)
+add_subdirectory(walker)

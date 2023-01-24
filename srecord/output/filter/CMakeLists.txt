@@ -18,5 +18,5 @@
 
 target_sources(srecord
     PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/reblock.cc
+        reblock.cc
 )

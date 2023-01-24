@@ -18,10 +18,10 @@
 
 target_sources(srecord
     PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/file.cc
-        ${CMAKE_CURRENT_LIST_DIR}/filter.cc
+        file.cc
+        filter.cc
 )
 
 
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/file)
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/filter)
+add_subdirectory(file)
+add_subdirectory(filter)
