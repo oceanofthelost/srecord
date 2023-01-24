@@ -60,19 +60,23 @@ option(${PROJECT_NAME}_ENABLE_DOCUMENTATION "Enable building documentation" ON)
 
 cmake_dependent_option(${PROJECT_NAME}_ENABLE_DOCUMENTATION_DOXYGEN
     "Add a doxygen target to generate the documentation" ON
-    ${PROJECT_NAME}_ENABLE_DOCUMENTATION OFF)
+    ${PROJECT_NAME}_ENABLE_DOCUMENTATION OFF
+)
 
 cmake_dependent_option(${PROJECT_NAME}_ENABLE_DOCUMENTATION_PDF
     "Add a PDF target to generate the documentation" ON
-    ${PROJECT_NAME}_ENABLE_DOCUMENTATION OFF)
+    ${PROJECT_NAME}_ENABLE_DOCUMENTATION OFF
+)
 
 cmake_dependent_option(${PROJECT_NAME}_ENABLE_DOCUMENTATION_HTML
     "Add a HTML target to generate the documentation" ON
-    ${PROJECT_NAME}_ENABLE_DOCUMENTATION OFF)
+    ${PROJECT_NAME}_ENABLE_DOCUMENTATION OFF
+)
 
 cmake_dependent_option(${PROJECT_NAME}_ENABLE_DOCUMENTATION_MAN
     "Add a Man page target to generate the documentation" ON
-    ${PROJECT_NAME}_ENABLE_DOCUMENTATION OFF)
+    ${PROJECT_NAME}_ENABLE_DOCUMENTATION OFF
+)
 
 
 option(${PROJECT_NAME}_USE_ADDITIONAL_SOURCEFILE "Use the additional source file" ON)
