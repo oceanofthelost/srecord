@@ -122,7 +122,7 @@ include(packaging)
 #===============#
 add_library(srecord STATIC)
 add_subdirectory(srecord)
-target_include_directories(srecord PRIVATE ${CMAKE_CURRENT_LIST_DIR})
+target_include_directories(srecord PUBLIC ${CMAKE_CURRENT_LIST_DIR})
 
 #==========================#
 # Executable               #
@@ -133,7 +133,6 @@ set(SRecord_EXECUTABLE_LIST srec_cat srec_cmp srec_info)
 foreach(p IN LISTS SRecord_EXECUTABLE_LIST)
     add_executable("${p}")
     add_subdirectory("${p}")
-    target_include_directories("${p}" PRIVATE ${CMAKE_CURRENT_LIST_DIR})
     set_target_properties("${p}" PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin )
 endforeach()
 
