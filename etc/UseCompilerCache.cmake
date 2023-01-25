@@ -1,5 +1,20 @@
 # Following is taken from "Professional CMake, Appendix B, 14th edition"
-cmake_minimum_required(VERSION 3.20...3.25)
+#
+# From Front Cover:
+#    This book or any portion thereof may not be reproduced in any manner or form without the
+#    express written permission of the author, with the following specific exceptions:
+#
+#    - The original purchaser may make personal copies exclusively for their own use on their
+#      electronic devices, provided that all reasonable steps are taken to ensure that only the original
+#      purchaser has access to such copies.
+#
+#    - Permission is given to use any of the code samples in this work without restriction. Attribution
+#      is not required.
+#
+#    The advice and strategies contained within this work may not be suitable for every situation. This
+#    work is sold with the understanding that the author is not held responsible for the results accrued
+#    from the advice in this book.
+#    cmake_minimum_required(VERSION 3.20...3.25)
 
 function(useCompilerCache)
     if(NOT CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
